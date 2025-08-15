@@ -14,6 +14,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
 # Load sample data
 with open('../data/sample_data.json', 'r') as file:
     data = json.load(file)
