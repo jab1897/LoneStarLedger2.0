@@ -14,15 +14,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+# Health check endpoint for Render
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
-# Load sample data
-with open('../data/sample_data.json', 'r') as file:
-    data = json.load(file)
-districts = data["districts"]
-geojson = data["geojson"]
+
+# Root endpoint (in case health checks hit /)
+@app.get("/")
+def root():
+    return {"message": "Welcome to LoneStarLedger API"}
+
+# Load sample data (with try-except to handle file issues)
+try:
+    with open('../data/sample_data.json', 'r') as file:
+        data = json.load(file)
+    districts = data["districts"]
+    geojson = data["geojson"]
+except FileNotFoundError:
+    districts = []
+    geojson = {"type": "FeatureCollection", "features": []}
+    print("Warning: sample_data.json not found - using empty data")
 
 class SchoolSummary(BaseModel):
     id: str
