@@ -1,5 +1,3 @@
-{
-  "rewrites": [
-    {"source": "/(.*)", "destination": "/index.html"}
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d2fec5cae16dcdb09f98d5fd09d801d133f46e5a829f962d710ed00aeb602847
+size 77
