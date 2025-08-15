@@ -29,3 +29,7 @@ LoneStarLedger2.0 is a full-stack data-driven transparency website focused on sc
 Theme: Royal blue (#003366) and gold (#FFD700). Mobile-responsive, minimalist design.
 
 Target: Parents, lawmakers, journalists for quick, transparent lookups.
+
+
+## Deployment Notes
+- Backend deployed on Render: [Your Render URL here]
