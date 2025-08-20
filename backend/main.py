@@ -49,9 +49,9 @@ def get_schools(q: str = Query(None), min_spend: float = Query(None), max_debt: 
     filtered = districts
     if q:
         filtered = [d for d in filtered if q.lower() in d["name"].lower() or any(q.lower() in c["name"].lower() for c in d["campuses"])]
-    if min_spend:
+    if min_spend is not None:
         filtered = [d for d in filtered if d["per_pupil_spending"] >= min_spend]
-    if max_debt:
+    if max_debt is not None:
         filtered = [d for d in filtered if d["total_debt"] <= max_debt]
     return [{"id": d["id"], "name": d["name"]} for d in filtered]
 
